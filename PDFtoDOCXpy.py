@@ -1,6 +1,5 @@
 from tkinter import *
-from tkinter import ttk
-from tkinter import filedialog
+from tkinter import ttk,filedialog, messagebox
 from pdf2docx import Converter
 import os
 
@@ -61,15 +60,14 @@ def main():
 	def convertirADOCX():
 		global pdf_file
 		pdf_file = ''
-		pdf_file = archivo
+		pdf_file = ent.get()
 		docx_file = 'converted.docx'
 		ent.config(state='normal')
 		ent.delete(0, END)
 		ent.config(state='readonly')
 
 		cv = Converter(pdf_file)
-		path = os. getcwd()
-		docx = cv.convert(docx_file)
+		cv.convert(docx_file)
 		cv.close()
 
 
