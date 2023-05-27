@@ -1,8 +1,6 @@
 from tkinter import *
 from tkinter import ttk,filedialog, messagebox
 from pdf2docx import Converter
-import os
-
 
 pdf_file = ''
 archivo = ''
@@ -69,6 +67,7 @@ def main():
 		cv = Converter(pdf_file)
 		cv.convert(docx_file)
 		cv.close()
+		msg = messagebox.showinfo("Exitoso","La conversion del archivo ha sido exitosa.")
 
 
 	btn2 = ttk.Button(frameContenido, style="boton.TButton", width=20 ,text= "Guardar y Convertir", command= convertirADOCX)
