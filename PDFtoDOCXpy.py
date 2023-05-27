@@ -10,7 +10,7 @@ archivo = ''
 def main():
 	ventana = Tk()
 	ventana.geometry("600x500")
-	
+	ventana.title("Docx converter")
 	ventana.config(bg="darkslateblue")
 
 	estilos = ttk.Style()
