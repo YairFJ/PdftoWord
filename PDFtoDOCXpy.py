@@ -1,9 +1,11 @@
 from tkinter import *
 from tkinter import ttk,filedialog, messagebox
 from pdf2docx import Converter
+import shutil, os
 
 pdf_file = ''
 archivo = ''
+
 
 def main():
 	ventana = Tk()
@@ -64,10 +66,15 @@ def main():
 		ent.delete(0, END)
 		ent.config(state='readonly')
 
-		cv = Converter(pdf_file)
-		cv.convert(docx_file)
-		cv.close()
-		msg = messagebox.showinfo("Exitoso","La conversion del archivo ha sido exitosa.")
+		try:
+			cv = Converter(pdf_file)
+			cv.convert(docx_file)
+			cv.close()
+			shutil.move("converted.docx", "C:/Users/User/OneDrive/Desktop/PdftoWord")
+			msg = messagebox.showinfo("Exitoso","La conversion del archivo ha sido exitosa.")
+		except:
+			msgw = messagebox.showerror("Erroneo","No se pudo convertir el archivo.")
+
 
 
 	btn2 = ttk.Button(frameContenido, style="boton.TButton", width=20 ,text= "Guardar y Convertir", command= convertirADOCX)
